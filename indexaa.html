@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JAGAPINTU.ID - Hold The Door</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif
+        }
+
+        body {
+            background: #0a0a0a;
+            color: #fff
+        }
+
+        header {
+            background: #111;
+            padding: 14px 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #d4af37;
+            position: sticky;
+            top: 0;
+            z-index: 10
+        }
+
+        .logo {
+            font-weight: 900;
+            color: #d4af37;
+            font-size: 20px
+        }
+
+        .tag {
+            font-size: 10px;
+            color: #aaa
+        }
+
+        nav {
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            padding: 10px;
+            background: #111
+        }
+
+        nav button {
+            background: #222;
+            color: #fff;
+            border: 1px solid #333;
+            padding: 8px 14px;
+            border-radius: 20px;
+            white-space: nowrap;
+            cursor: pointer
+        }
+
+        nav button.active {
+            background: #d4af37;
+            color: #000;
+            font-weight: bold
+        }
+
+        .hero {
+            padding: 20px;
+            text-align: center;
+            background: linear-gradient(180deg, #1a1a1a, #0a0a0a)
+        }
+
+        .hero h1 {
+            color: #d4af37;
+            font-size: 26px
+        }
+
+        .hero p {
+            color: #ccc;
+            font-size: 13px;
+            margin: 8px 0
+        }
+
+        .stats {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 12px
+        }
+
+        .stats div {
+            background: #1a1a1a;
+            border: 1px solid #333;
+            padding: 10px;
+            border-radius: 10px;
+            font-size: 12px
+        }
+
+        .stats b {
+            color: #d4af37;
+            font-size: 16px;
+            display: block
+        }
+
+        .section {
+            padding: 14px
+        }
+
+        .card {
+            background: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 14px;
+            overflow: hidden;
+            margin-bottom: 16px
+        }
+
+        .card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            background: #333
+        }
+
+        .card-body {
+            padding: 12px
+        }
+
+        .badge {
+            background: #d4af37;
+            color: #000;
+            font-size: 11px;
+            padding: 3px 8px;
+            border-radius: 20px;
+            font-weight: bold
+        }
+
+        .badge-live {
+            background: red;
+            color: #fff;
+            font-size: 11px;
+            padding: 3px 8px;
+            border-radius: 20px
+        }
+
+        .actions {
+            display: flex;
+            gap: 8px;
+            margin-top: 10px;
+            flex-wrap: wrap
+        }
+
+        .actions button {
+            background: #222;
+            border: 1px solid #444;
+            color: #fff;
+            padding: 7px 12px;
+            border-radius: 20px;
+            cursor: pointer
+        }
+
+        .actions button:hover {
+            background: #d4af37;
+            color: #000
+        }
+
+        input,
+        textarea,
+        select {
+            width: 100%;
+            padding: 10px;
+            margin: 6px 0;
+            border-radius: 8px;
+            border: 1px solid #444;
+            background: #111;
+            color: #fff
+        }
+
+        .btn-gold {
+            background: #d4af37;
+            color: #000;
+            font-weight: 900;
+            padding: 12px;
+            border: none;
+            border-radius: 10px;
+            width: 100%;
+            cursor: pointer
+        }
+
+        .hidden {
+            display: none
+        }
+
+        #splash {
+            position: fixed;
+            inset: 0;
+            background: #000;
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px
+        }
+
+        .gate {
+            font-size: 80px;
+            margin: 10px
+        }
+
+        .eye {
+            font-size: 40px
+        }
+
+        #splash2 {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, .95);
+            z-index: 101;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px
+        }
+
+        .footer {
+            padding: 20px;
+            text-align: center;
+            color: #777;
+            font-size: 12px;
+            border-top: 1px solid #222
+        }
+
+        .faq {
+            background: #1a1a1a;
+            padding: 12px;
+            border-radius: 10px;
+            margin: 8px 0
+        }
+
+        .faq b {
+            color: #d4af37
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- SPLASH 1 -->
+    <div id="splash">
+        <div class="eye">👁️</div>
+        <div class="gate">🚪</div>
+        <h1 style="color:#d4af37">JAGAPINTU.ID</h1>
+        <p>WELCOME TO JAGAPINTU.ID<br>Hold The Door. Keep Intruders Out.</p>
+        <p style="font-size:12px;color:#888;margin:12px 0">AI Penjaga Sedang Mengawasi Gerbang...</p>
+        <button class="btn-gold" style="max-width:280px" onclick="masuk()">MASUK GERBANG →</button>
+    </div>
+
+    <!-- SPLASH 2 UPLOAD -->
+    <div id="splash2">
+        <div id="splash2Content"></div>
+        <button class="btn-gold" style="max-width:280px;margin-top:16px" onclick="tutupSplash2()">KEMBALI KE
+            BERANDA</button>
+    </div>
+
+    <header>
+        <div>
+            <div class="logo">JAGAPINTU.ID</div>
+            <div class="tag">Hold The Door. Keep Intruders Out.</div>
+        </div>
+        <div style="font-size:22px">👁️</div>
+    </header>
+
+    <nav>
+        <button class="active" onclick="filterCat('all',this)">Beranda</button>
+        <button onclick="filterCat('Edukasi',this)">Edukasi 07-12</button>
+        <button onclick="filterCat('Ekonomi',this)">Ekonomi 12-14</button>
+        <button onclick="filterCat('Hukum',this)">Hukum 14-16</button>
+        <button onclick="filterCat('Inovasi',this)">Inovasi 16-18</button>
+        <button onclick="filterCat('Hiburan',this)">Hiburan 18-20</button>
+        <button onclick="filterCat('Musik',this)">Musik 20-23</button>
+        <button onclick="filterCat('Politik',this)">Politik 23-05</button>
+        <button onclick="showPage('uploadPage')">⬆️ Upload</button>
+        <button onclick="showPage('profilPage')">👤 Profil</button>
+    </nav>
+
+    <div class="hero">
+        <h1>GERBANG TERBUKA</h1>
+        <p>Semua video dijaga AI Penjaga. Aman, Sopan, Tanpa Penyusup.</p>
+        <div class="stats">
+            <div><b id="statLolos">128</b>Video Lolos</div>
+            <div><b id="statTolak">15</b>Video Ditahan</div>
+            <div><b>3.400</b>Penjaga Online</div>
+        </div>
+        <p id="jamSekarang" style="color:#d4af37;font-weight:bold;margin-top:10px"></p>
+    </div>
+
+    <!-- BERANDA -->
+    <div id="berandaPage">
+        <div class="section">
+            <h3>🔥 Trending Gerbang Hari Ini</h3>
+            <div id="videoList"></div>
+        </div>
+
+        <div class="section">
+            <h3>📚 Arsip Gerbang</h3>
+            <p style="font-size:13px;color:#aaa">Video lama tidak hilang, semua tersimpan di sini.</p>
+        </div>
+
+        <div class="section">
+            <h3>❓ FAQ</h3>
+            <div class="faq"><b>Kenapa video gw ditolak AI?</b><br>Karena ada kata kasar, ujaran kebencian, ancaman,
+                atau hoax. Cek alasan di notifikasi.</div>
+            <div class="faq"><b>Kenapa Politik cuma jam 23.00 - 05.00?</b><br>Karena Politik butuh suasana tenang,
+                Diskusi Malam, bukan jam sibuk.</div>
+            <div class="faq"><b>Kenapa komen ketahan?</b><br>Komen juga dijaga AI. Kalo toxic, ketahan otomatis.</div>
+        </div>
+
+        <div class="section">
+            <h3>ℹ️ About Us</h3>
+            <p style="font-size:13px;color:#ccc;line-height:1.6">JagaPintu.id adalah gerbang video Indonesia yang dijaga
+                AI. Semua orang boleh bicara, tapi tidak boleh menyakiti. Hold The Door. Keep Intruders Out.</p>
+            <h3 style="margin-top:14px">⚠️ Disclaimer</h3>
+            <p style="font-size:13px;color:#ccc;line-height:1.6">Semua video tanggung jawab pengirim. JagaPintu.id tidak
+                bertanggung jawab atas isi pendapat di video. Lolos AI bukan berarti 100% benar, tapi sudah lolos dari
+                ujaran kebencian dan kekerasan.</p>
+            <h3 style="margin-top:14px">📜 Aturan Gerbang</h3>
+            <p style="font-size:13px;color:#ccc;line-height:1.6">Dilarang kata kasar, hoax, ancaman, SARA. Langgar 3x,
+                akun ditahan.</p>
+            <h3 style="margin-top:14px">🔒 Privasi</h3>
+            <p style="font-size:13px;color:#ccc">Video disimpan aman, data tidak dijual.</p>
+            <h3 style="margin-top:14px">📩 Hubungi Kami</h3>
+            <p style="font-size:13px;color:#ccc">Lapor masalah gerbang via tombol Lapor di setiap video.</p>
+        </div>
+    </div>
+
+    <!-- UPLOAD -->
+    <div id="uploadPage" class="hidden section">
+        <h2>⬆️ Upload Ke Gerbang</h2>
+        <p style="font-size:13px;color:#aaa">Video akan diperiksa AI Penjaga dulu sebelum tayang.</p>
+        <input id="judul" placeholder="Judul Video">
+        <textarea id="deskripsi" placeholder="Deskripsi / Keterangan Video"></textarea>
+        <select id="kategori">
+            <option>Edukasi</option>
+            <option>Ekonomi</option>
+            <option>Hukum</option>
+            <option>Inovasi</option>
+            <option>Hiburan</option>
+            <option>Musik</option>
+            <option>Politik</option>
+        </select>
+        <input type="file" accept="video/*">
+        <button class="btn-gold" onclick="kirimAI()">KIRIM KE AI PENJAGA →</button>
+        <p style="font-size:12px;color:#888;margin-top:8px">Contoh kata yang ditolak AI: kasar, benci, ancam, hoax,
+            sara. Coba ketik itu di judul/deskripsi untuk tes Ditolak.</p>
+    </div>
+
+    <!-- PROFIL -->
+    <div id="profilPage" class="hidden section">
+        <div class="card">
+            <div class="card-body">
+                <h2>@kamu_jagapintu ✅ Centang Emas</h2>
+                <p>Level: <b style="color:#d4af37">PENJAGA TERPERCAYA</b></p>
+                <p>Badge: PENJAGA MALAM 🌙 | PENJAGA TERPERCAYA 🛡️</p>
+                <p>Video Lolos: 12 | Video Ditahan: 1</p>
+                <p style="margin-top:10px;font-size:13px;color:#aaa">Papan Peringkat Penjaga: Kamu Rank #4 dari 3.400
+                    Penjaga</p>
+            </div>
+        </div>
+        <h3>💾 Video Tersimpan</h3>
+        <p style="color:#aaa;font-size:13px">Video yang lu simpen akan muncul di sini.</p>
+    </div>
+
+    <div class="footer">JAGAPINTU.ID © 2026 - Hold The Door. Keep Intruders Out.<br>Mode Malam Otomatis 23.00 - 05.00 |
+        Mode Hemat Kuota Tersedia</div>
+
+    <script>
+        let videos = [
+            { judul: "Belajar Matematika Jadi Gampang, Dijamin Paham!", kat: "Edukasi", jam: "07.00 - 12.00", pengirim: "@guru_bangsa", like: 124, desc: "Penjelasan matematika paling santai, buat yang takut matematika." },
+            { judul: "Kenapa Harga Sembako Naik? Ini Penjelasannya", kat: "Ekonomi", jam: "12.00 - 14.00", pengirim: "@ekonomi_rakyat", like: 89, desc: "Bedah ekonomi harian, kenapa harga naik turun." },
+            { judul: "Jangan Asal Ngomong Di Sosmed, Ini Hukumnya!", kat: "Hukum", jam: "14.00 - 16.00", pengirim: "@pengacara_muda", like: 210, desc: "Hukum ITE, apa yang boleh dan tidak boleh di sosmed." },
+            { judul: "Anak Kampung Bikin Robot Dari Barang Bekas!", kat: "Inovasi", jam: "16.00 - 18.00", pengirim: "@inovator_muda", like: 340, desc: "Inovasi anak Indonesia, dari barang bekas jadi robot." },
+            { judul: "Prank Bapak-Bapak Paling Ngakak Se-Indonesia", kat: "Hiburan", jam: "18.00 - 20.00", pengirim: "@hiburan_rakyat", like: 512, desc: "Hiburan santai, dijamin ketawa." },
+            { judul: "Musik Santai Buat Temenin Begadang & Belajar", kat: "Musik", jam: "20.00 - 23.00", pengirim: "@musik_santai", like: 430, desc: "Musik santai, cocok buat rebahan malam." },
+            { judul: "Diskusi Malam: Masa Depan Indonesia Mau Kemana?", kat: "Politik", jam: "23.00 - 05.00", pengirim: "@diskusi_malam", like: 890, desc: "Diskusi Malam Politik, sopan, tanpa ujaran kebencian." },
+        ];
+        let currentFilter = 'all';
+        function render() {
+            let list = document.getElementById('listVideo');
+            if(!list) return;
+            list.innerHTML = "";
+            videos.forEach((v) => {
+                let card = document.createElement('div');
+                card.className = 'card';
+
+                if (v.videoUrl) {
+                    let vid = document.createElement('video');
+                    vid.src = v.videoUrl;
+                    vid.controls = true;
+                    vid.style.width = '100%';
+                    card.appendChild(vid);
+                } else {
+                    let img = document.createElement('img');
+                    img.src = 'https://picsum.photos/600/300?random=' + v.like;
+                    card.appendChild(img);
+                }
+
+                let body = document.createElement('div');
+                body.className = 'card-body';
+
+                let badge = document.createElement('span');
+                badge.className = 'badge';
+                badge.textContent = v.kat;
+
+                let h3 = document.createElement('h3');
+                h3.textContent = v.judul;
+
+                let meta = document.createElement('p');
+                meta.className = 'meta';
+                meta.textContent = '📺 ' + v.jam + ' | ' + v.pengirim + ' | ❤️ ' + v.like;
+
+                let desc = document.createElement('p');
+                desc.textContent = v.desc;
+
+                let actions = document.createElement('div');
+                actions.className = 'actions';
+
+                let btnLike = document.createElement('button');
+                btnLike.textContent = '❤️ Suka';
+                btnLike.onclick = function () { likeVideo(this); };
+
+                let btnShare = document.createElement('button');
+                btnShare.textContent = '🔗 Bagikan';
+                btnShare.onclick = function () { shareVideo(v.judul); };
+
+                actions.appendChild(btnLike);
+                actions.appendChild(btnShare);
+
+                body.appendChild(badge);
+                body.appendChild(h3);
+                body.appendChild(meta);
+                body.appendChild(desc);
+                body.appendChild(actions);
+                card.appendChild(body);
+                list.appendChild(card);
+            });
+            function uploadVideo(){
+        }
+        let judulBaru = document.getElementById('judul').value || 'Video Baru Kamu';
+        let fileInput = document.getElementById('fileVideo'); // sesuaikan ID input file lo kalau beda
+        let videoUrl = "";
+        if (fileInput && fileInput.files.length > 0) {
+            videoUrl = URL.createObjectURL(fileInput.files[0]);
+        }
+        let descBaru = document.getElementById('deskripsi').value || 'Video baru lolos AI Penjaga.';
+
+        document.getElementById('splash2Content').innerHTML = `<div style="font-size:60px">✨🚪✨</div><h2 style="color:#d4af37">✅ HASIL AI: LOLOS</h2><p>Gerbang Terbuka! Video Masuk Server & Tayang di Beranda.<br>Welcome to JagaPintu.id<br>Kategori ${kat} • Tayang ${jamMap[kat]}</p>`;
+        render();
+            }
+        function tutupSplash2() { document.getElementById('splash2').style.display = 'none'; showPage('berandaPage'); }
+        function updateJam() {
+            let d = new Date(); let h = d.getHours();
+            let kat = h >= 7 && h < 12 ? 'Edukasi' : h >= 12 && h < 14 ? 'Ekonomi' : h >= 14 && h < 16 ? 'Hukum' : h >= 16 && h < 18 ? 'Inovasi' : h >= 18 && h < 20 ? 'Hiburan' : h >= 20 && h < 23 ? 'Musik' : 'Politik';
+            document.getElementById('jamSekarang').textContent = `Sekarang Jam ${d.toLocaleTimeString('id-ID')} • Gerbang Yang Buka: ${kat}`;
+        }
+        render(); updateJam(); setInterval(updateJam, 1000);
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script>
+        const SUPABASE_URL = "https://bieokcgztfhbybkdegmz.supabase.co";
+        const SUPABASE_KEY = "sb_publishable_YLnhe-uvD15QyNnvVSYxTA_io7W-b2-";
+        const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+        async function loadPintu() {
+            const { data, error } = await supabaseClient.from('pintu').select('*');
+            if (error) {
+                console.log("Gagal load pintu:", error);
+                return;
+            }
+            console.log("Data dari Supabase:", data);
+        }
+
+        async function togglePintu(statusLama, id) {
+            let statusBaru = statusLama === 'Terbuka' ? 'Tertutup' : 'Terbuka';
+            const { error } = await supabaseClient.from('pintu').update({ status: statusBaru }).eq('id', id);
+            if (error) { alert('Gagal: ' + error.message); return; }
+            alert('Pintu berhasil diubah jadi ' + statusBaru + '!');
+            location.reload();
+        }
+        // Tampilkan di atas videoList biar keliatan nyambung
+        const list = document.getElementById('videoList');
+        if (data && data.length > 0 && list) {
+            const info = document.createElement('div');
+            let statusBaru = data[0].status === 'Terbuka' ? 'Tertutup' : 'Terbuka';
+            info.innerHTML = `<div class="card"><div class="card-body"><span class="badge">LIVE DARI SUPABASE ✅</span><h3 style="margin:8px 0">🚪 ${data[0].nama_pintu}</h3><p style="font-size:13px;color:#aaa">Lokasi: ${data[0].lokasi} • Status: <b style="color:#d4af37">${data[0].status}</b></p><button class="btn-gold" style="margin-top:10px" onclick="togglePintu('${data[0].status}', ${data[0].id})">UBAH JADI ${statusBaru} 🔑</button></div></div>`;;
+            list.prepend(info);
+        }
+        loadPintu();
+        function masuk(){
+  let s1 = document.getElementById('splash');
+  if(s1) s1.style.display = 'none';
+  let s2 = document.getElementById('splash2');
+  if(s2) s2.style.display = 'none';
+  let main = document.getElementById('main');
+  if(main) main.style.display = 'block';
+  let beranda = document.getElementById('beranda');
+  if(beranda) beranda.style.display = 'block';
+  render();
+}
+    </script>
+</body>
+
+</html>
